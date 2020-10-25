@@ -52,6 +52,13 @@ public class Duenno {
     public Duenno() {
     }
 
+    /**
+     * Metodo constructor para la clase Duenno
+     * @param pNombre String que define el nombre del dueño
+     * @param pCedula String que define la cedula del dueño
+     * @param pTelefono String que define el numero de telefono del dueño
+     * @param pDireccion String que define la direccion del dueño
+     */
     public Duenno(String pNombre, String pCedula, String pTelefono, String pDireccion) {
         this.nombreCompleto = pNombre;
         this.cedula = pCedula;

@@ -60,6 +60,15 @@ public class Mascota {
     //Constructores
     public Mascota() {
     }
+
+    /**
+     * Metodo constructor para la clase Mascota
+     * @param pNombre String que define el nombre de la mascota
+     * @param pDuenno objeto de la clase Duenno que define al dueño de la mascota
+     * @param pFoto String que define la foto de perfil de la mascota
+     * @param pObservaciones String que define las observcaciones para la mascota
+     * @param pRanking int que define el numero de estrellas para el ranking de la mascota
+     */
     public Mascota(String pNombre, Duenno pDuenno, String pFoto, String pObservaciones, int pRanking) {
         this.nombre = pNombre;
         this.duenno = pDuenno;
@@ -67,6 +76,13 @@ public class Mascota {
         this.observaciones = pObservaciones;
         this.ranking = pRanking;
     }
+    /**
+     * Metodo constructor para la clase Mascota
+     * @param pNombre String que define el nombre de la mascota
+     * @param pFoto String que define la foto de perfil de la mascota
+     * @param pObservaciones String que define las observcaciones para la mascota
+     * @param pRanking int que define el numero de estrellas para el ranking de la mascota
+     */
     public Mascota(String pNombre, String pFoto, String pObservaciones, int pRanking) {
         this.nombre = pNombre;
         this.duenno = new Duenno("Default", "1-2345-6789", "none", "none");

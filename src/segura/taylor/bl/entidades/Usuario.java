@@ -69,6 +69,15 @@ public class Usuario {
     public Usuario() {
     }
 
+    /**
+     * Metodo constructor para la clase Usuario
+     * @param nombreCompleto String que define el nombre de este usuario
+     * @param cedula String que define la cedula de este usuario
+     * @param telefono String que define el telefono de este usuario
+     * @param direccion String que define la direccion de este usuario
+     * @param estado valor del enumerador Usuario.Estado que define el estado de este usuario
+     * @param rol valor del enumerador Usuario.Rol que define el rol de este usuario
+     */
     public Usuario(String nombreCompleto, String cedula, String telefono, String direccion, Estado estado, Rol rol) {
         this.nombreCompleto = nombreCompleto;
         this.cedula = cedula;

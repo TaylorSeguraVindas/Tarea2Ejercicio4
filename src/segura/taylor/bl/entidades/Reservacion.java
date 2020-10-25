@@ -43,6 +43,12 @@ public class Reservacion {
     public Reservacion() {
     }
 
+    /**
+     * Metodo constructor para la clase Reservacion
+     * @param pNombreMascota String que define el nombre de la mascota
+     * @param pFechaEntrada String que define la fecha de entrada para la reservacion
+     * @param pFechaSalida String que define la fecha de salida para la reservacion
+     */
     public Reservacion(String pNombreMascota, String pFechaEntrada, String pFechaSalida) {
         this.nombreMascota = pNombreMascota;
         this.fechaEntrada = pFechaEntrada;

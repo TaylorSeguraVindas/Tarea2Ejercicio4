@@ -52,6 +52,13 @@ public class Cita {
     public Cita() {
     }
 
+    /**
+     * Metodo constructor para la clase Cita
+     * @param pNombreMascota String que contiene el nombre de la mascota
+     * @param pFecha String que define la fecha de la cita
+     * @param pHora String que define la hora de la cita
+     * @param pObservaciones String que define las observaciones de la cita
+     */
     public Cita(String pNombreMascota, String pFecha, String pHora, String pObservaciones) {
         this.nombreMascota = pNombreMascota;
         this.fecha = pFecha;

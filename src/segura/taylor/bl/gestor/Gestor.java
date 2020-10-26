@@ -26,15 +26,15 @@ public class Gestor {
     //Metodos
     /**
      * Este método se usa para registrar una nueva cita
-     * @param pNombreMascota un String que contiene el nombre de la mascota
+     * @param pMascota un objeto de la clase Mascota que contiene la mascota que asiste a la cita
      * @param pFecha un String que contiene la fecha de la reservacion
      * @param pHora un String que contiene la hora de la reservación
      * @param pObservaciones un String que contiene las observaciones
      * @return true si el registro es exitoso, false si la cita ya existe
      * @see Cita
      */
-    public boolean registrarCita(String pNombreMascota, String pFecha, String pHora, String pObservaciones){
-        Cita nuevaCita = new Cita(pNombreMascota, pFecha, pHora, pObservaciones);
+    public boolean registrarCita(Mascota pMascota, String pFecha, String pHora, String pObservaciones){
+        Cita nuevaCita = new Cita(pMascota, pFecha, pHora, pObservaciones);
         if(!citas.contains(nuevaCita)){
             citas.add(nuevaCita);
             return true;
@@ -85,17 +85,31 @@ public class Gestor {
     public ArrayList<Mascota> listarMascotas(){
         return this.mascotas;
     }
+    /**
+     * Este método se usa para buscar una mascota usando como filtro el nombre
+     * @param pNombre el nombre de la mascota que se busca
+     * @return un objeto de la clase Mascota si se encuentra, null si no se encuentra
+     * @see Mascota
+     */
+    public Mascota buscarMascota(String pNombre){
+        for(Mascota objMascota: mascotas){
+            if(objMascota.getNombre().equals(pNombre)){
+                return objMascota;
+            }
+        }
 
+        return null;
+    }
     /**
      * Este método se usa para registrar una nueva reservacion
-     * @param  pNombreMascota un String que contiene el nombre de la mascota a la que pertenece la reservacion
+     * @param  pMascota un objeto de la clase Mascota que contiene la mascota que asiste a la reservacion
      * @param pFechaEntrada un String que contiene la fecha de entrada
      * @param pFechaSalida un String que contiene la fecha de salida
      * @return true si el registro es exitoso, false si la reservacion ya existe
      * @see Reservacion
      */
-    public boolean registrarReservacion(String pNombreMascota, String pFechaEntrada, String pFechaSalida){
-        Reservacion nuevaReservacion = new Reservacion(pNombreMascota, pFechaEntrada, pFechaSalida);
+    public boolean registrarReservacion(Mascota pMascota, String pFechaEntrada, String pFechaSalida){
+        Reservacion nuevaReservacion = new Reservacion(pMascota, pFechaEntrada, pFechaSalida);
         if(!reservaciones.contains(nuevaReservacion)){
             reservaciones.add(nuevaReservacion);
             return true;

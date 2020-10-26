@@ -90,8 +90,33 @@ public class Controlador {
      */
     private boolean registrarCita() {
         ui.imprimirLinea("\n\nBienvenido al registro de citas");
-        ui.imprimir("Ingrese el nombre de la mascota: ");
-        String nombre = ui.leerLinea();
+
+        Mascota mascota;
+
+        do{
+            ui.imprimir("Ingrese el nombre de la mascota: ");
+            String nombre = ui.leerLinea();
+            mascota = gestor.buscarMascota(nombre);
+
+            if(mascota == null){
+                ui.imprimirLinea("No se encontró ninguna mascota con ese nombre.");
+                ui.imprimirLinea("1. Crear nueva mascota");
+                ui.imprimirLinea("2. Intentar con otro nombre");
+                ui.imprimirLinea("3. Cancelar reservacion");
+                ui.imprimir("Su opcion: ");
+                int opcion = ui.leerEntero();
+
+                switch (opcion){
+                    case 1:
+                        mascota = registrarMascota();
+                        break;
+                    case 3:
+                        return false;
+                    default:
+                        break;
+                }
+            }
+        } while(mascota == null);
 
         ui.imprimir("Ingrese la fecha de la cita: ");
         String fecha = ui.leerLinea();
@@ -102,7 +127,7 @@ public class Controlador {
         ui.imprimir("Ingrese las observaciones: ");
         String observaciones = ui.leerLinea();
 
-        boolean resultado = gestor.registrarCita(nombre, fecha,  hora, observaciones);
+        boolean resultado = gestor.registrarCita(mascota, fecha,  hora, observaciones);
         if(resultado){
             ui.imprimirLinea("Registro realizado correctamente");
         } else {
@@ -130,8 +155,33 @@ public class Controlador {
      */
     private boolean registrarReservacion() {
         ui.imprimirLinea("\n\nBienvenido al registro de reservaciones");
-        ui.imprimir("Ingrese el nombre de la mascota: ");
-        String nombre = ui.leerLinea();
+
+        Mascota mascota;
+
+        do{
+            ui.imprimir("Ingrese el nombre de la mascota: ");
+            String nombre = ui.leerLinea();
+            mascota = gestor.buscarMascota(nombre);
+
+            if(mascota == null){
+                ui.imprimirLinea("No se encontró ninguna mascota con ese nombre.");
+                ui.imprimirLinea("1. Crear nueva mascota");
+                ui.imprimirLinea("2. Intentar con otro nombre");
+                ui.imprimirLinea("3. Cancelar reservacion");
+                ui.imprimir("Su opcion: ");
+                int opcion = ui.leerEntero();
+
+                switch (opcion){
+                    case 1:
+                        mascota = registrarMascota();
+                        break;
+                    case 3:
+                        return false;
+                    default:
+                        break;
+                }
+            }
+        } while(mascota == null);
 
         ui.imprimir("Ingrese la fecha de entrada: ");
         String fechaEntrada = ui.leerLinea();
@@ -139,7 +189,7 @@ public class Controlador {
         ui.imprimir("Ingrese la fecha de salida: ");
         String fechaSalida = ui.leerLinea();
 
-        boolean resultado = gestor.registrarReservacion(nombre, fechaEntrada, fechaSalida);
+        boolean resultado = gestor.registrarReservacion(mascota, fechaEntrada, fechaSalida);
         if(resultado){
             ui.imprimirLinea("Registro realizado correctamente");
         } else {
@@ -215,7 +265,7 @@ public class Controlador {
      * Este método se usa para llevar a cabo el registro de una mascota
      * @return true si el registro es exitoso, false si la mascota ya existe
      */
-    private boolean registrarMascota() {
+    private Mascota registrarMascota() {
         ui.imprimirLinea("\n\nBienvenido al registro de mascotas");
         ui.imprimirLinea("DATOS DE LA MASCOTA");
         ui.imprimir("Ingrese el nombre de la mascota: ");
@@ -247,11 +297,12 @@ public class Controlador {
         boolean resultado = gestor.registrarMascota(nombreMascota, duennoMascota, foto, observaciones, ranking);
         if(resultado){
             ui.imprimirLinea("Registro realizado correctamente");
+            return gestor.buscarMascota(nombreMascota);
         } else {
             ui.imprimirLinea("La mascota ya existe :(");
         }
 
-        return resultado;
+        return null;
     }
     /**
      * Este método se usa mostrar en el UI todas las mascotas que se han registrado
